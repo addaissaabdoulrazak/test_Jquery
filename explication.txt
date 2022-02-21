@@ -1,0 +1,44 @@
+Généralité:
+-----------
+Normalement le jquery est utiliser après le chargement de notre page
+car l'utisation du jquery se fait sur les element html ayant été chargé coté navigateur,
+car après avoir écrit du code html, lors du chargement coté navigateur cette page sera considerer comme un Objet(DOM) 
+car (en programmation tout est Objet) et dont les éléments de cette page seront considérés comme étant des les noeud d'un arbre 
+
+d'où en ce qui concerne le chargement il faut la présence <<$(document).ready(fonction(){})">>
+
+Les Expression regulières(regex):
+---------------------------------
+faut savoir que le point est un caractère utiliser en regex et donc faut faire échapper le caractère,
+bien sur dans le cas où il est utiliser hors du /[]/(retenez bien cette syntaxe =>{/[]/}<=),
+car tous ce qui se trouve entre le /[]/ represente une combinaison de caractère.
+l'utilisation du signe + indique q'un ou un ensemble de caractère peut être utiliser 1(un) ou plusieurs fois
+ dont la syntaxe est la suivante: {/[]+/}
+
+ exemple: addaissaabdoulrazak@gmail.com 
+ 
+ NB: dans la prémière sous chaine(addaissaabdoulrazak) il existe des caractères qui sont utiliser plusieurs fois 
+     donc utilisation du signe +
+
+ la meilleur solution est de diviser un problème en sous problème divisé pour mieux régner.
+ ..en decomposant l'andress email nous aurons les sous chaines suivantes/
+  (addaissaabdoulrazak)//(@)//(gmail)//(dot)//(com) =>[A-Za-z.-_]+@[A-Za-z _-]
+parcontre si l'expression regulière ne marche pas chercher une autre salution sur stackOverflow
+
+
+
+A rétenir:
+-----------
+il est evidemment possible d'utiliser du jquery pour controler l'envoie du formulaire et pour le faire nous avons deux possiblités
+
+1- soit en controllant la balise <form> et en associant a cette balise l'evenement submit
+
+2-soit sur l'evenement du click sur "le boutton" du formulaire(sur le bouton en lui associant l'evenement click)
+
+***Il n'existe qu'une seul methodes de Jquery et c'est la fonction jquery elle même; $(attribut de l'element ciblé);
+   les autres methodes comme le html(), css() sont des methodes du html => jquery.css(), jquery.text(), jquery.text();
+
+***par defaut le comportement d'une page html est la soumission d'un formulaire sans pour autant ce soucier que les champs soit vide ou pas 
+   et c'est a nous de nous assurer de cela via le jquery, toute fois vous pouvez effectuer(return false ) et observer voir le comportement de votre page
+   utilisation d'un boolean(false/true) pour controler le comportement par defaut d'une page html. 
+

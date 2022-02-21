@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Validation du Formulaire avec jquery</title>
+  </head>
+  <body>
+    <form method="get" action="./traitement.html">
+      <!-- champs Prenom -->
+      <div>
+        <label for="prenom">Prénom</label>
+        <input
+          type="text"
+          value=""
+          placeholder="Entrez votre Prénom"
+          id="prenom"
+        />
+        <!-- Nous allons injecté du texte via Jquery par la suite -->
+        <span class="PrenomError"></span>
+      </div>
+      <!-- Champs email -->
+      <div style="margin-top: 10px">
+        <label for="email">email</label>
+        <input
+          type="text"
+          value=""
+          placeholder="Entrez votre email"
+          id="email"
+        />
+        <span class="emailError"></span>
+      </div>
+
+      <!-- champs Mot de pass -->
+      <div style="margin-top: 10px">
+        <label for="pass">Pass</label>
+        <input
+          type="password"
+          value=""
+          placeholder="Entrez votre Pass"
+          id="pass"
+        />
+        <span class="passError"></span>
+      </div>
+
+      <!-- Champs Nom auquel on va appliquer les expression regulière -->
+      <div style="margin-top: 10px">
+        <label for="nom">Nom</label>
+        <input type="text" value="" placeholder="Entrez votre Nom" id="nom" />
+        <span class="nomError"></span>
+      </div>
+      <div style="margin-top: 10px">
+        <button type="submit" id="boutton">envoyer</button>
+      </div>
+    </form>
+    <script src="jquery.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $("#boutton").click(function () {
+          // cette variable est utiliser dans le cadre de controler le comportement par defaut d'une page html.
+          var result = true;
+          if ($("#prenom").val() == "") {
+            $("#prenom").css("border-color", "red");
+            $(".PrenomError")
+              .text("Remplissez ce champs s'il vous plaît")
+              .css("color", "red");
+            result = false;
+          } else {
+            $("#prenom").css("border-color", "green");
+            $(".PrenomError").text("");
+            result = true;
+          }
+          //
+          if ($("#pass").val().length < 5) {
+            $("#pass").css("border-color", "red");
+            $(".passError")
+              .text("Le Mot de Pass doit contenir au moin 5 caractères")
+              .css("color", "red");
+            result = false;
+          } else {
+            $("#pass").css("border-color", "green");
+            $(".passError").text("");
+          }
+          // match(/[]/) pour introduire la notion de expression regulière
+          if (
+            $("#nom")
+              .val()
+              .match(/[èéùà]/)
+          ) {
+            $("#nom").css("border-color", "red");
+            $(".nomError")
+              .text("veillez ne pas rentrez les caractère accentuer")
+              .css("color", "red");
+            result = false;
+          } else {
+            $("#nom").css("border-color", "green");
+            $(".nomError").text("");
+          }
+
+          if (
+            !$("#email")
+              .val()
+              .match(/[a-zA-Z0-9]\@[a-zA-Z0-9]/)
+          ) {
+            $("#email").css("border-color", "red");
+            $(".emailError")
+              .text("saisissez une address email valide")
+              .css("color", "red");
+            result = false;
+          } else {
+            $("#email").css("border-color", "green");
+            $(".emailError").text("");
+          }
+
+          return result;
+        });
+      });
+    </script>
+  </body>
+</html>
